@@ -1,9 +1,9 @@
-FROM python:3.11-slim
+FROM python:3.13-alpine
 
-RUN pip install fastapi uvicorn PyJWT requests kubernetes httpx
+RUN pip --no-cache-dir install fastapi uvicorn httpx
 
 COPY . /app
 WORKDIR /app
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
-
+# CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["uvicorn", "validate:app", "--host", "0.0.0.0", "--port", "8080"]
